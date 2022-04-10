@@ -14,13 +14,12 @@ final _formKey = GlobalKey<FormState>();
 
 class _HomePageState extends State<HomePage> {
   late String u;
-  String r = "Send";
+  String rs = "Send";
   void getdata(String value) async {
     var r = await Requests.get('https://api.isevenapi.xyz/api/iseven/$value/');
     r.raiseForStatus();
     String body = r.content();
-    var jsdata = jsonDecode(body);
-    print(jsdata['iseven']);
+    rs = '${(jsonDecode(body))['iseven']}';
   }
 
   final nameController = TextEditingController();
@@ -83,11 +82,12 @@ class _HomePageState extends State<HomePage> {
                   if (_formKey.currentState!.validate()) {
                     setState(() {
                       getdata(u);
+                      u = '';
                     });
                   }
                 },
                 child: Text(
-                  '$r',
+                  '$rs',
                   style: TextStyle(
                     color: Color(0xffffffff),
                     fontWeight: FontWeight.w800,
