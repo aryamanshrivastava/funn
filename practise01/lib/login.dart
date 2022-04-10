@@ -60,22 +60,22 @@ class _LoginPageState extends State<LoginPage> {
                       ],
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(30, 30, 30, 0),
+                      padding: EdgeInsetsDirectional.fromSTEB(35, 30, 35, 0),
                       child: TextFormField(
                         controller: emailController,
                         style: TextStyle(fontSize: 20, color: Colors.black),
                         keyboardType: TextInputType.emailAddress,
-                        validator: (value) {
-                          if (value == null) {
-                            return 'Please enter e-mail address';
-                          } else if (!RegExp(
-                                  r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                              .hasMatch(value)) {
-                            return 'Enter valid Email';
-                          } else {
-                            return null;
-                          }
-                        },
+                        // validator: (value) {
+                        //   if (value == null) {
+                        //     return 'Please enter e-mail address';
+                        //   } else if (!RegExp(
+                        //           r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                        //       .hasMatch(value)) {
+                        //     return 'Enter valid Email';
+                        //   } else {
+                        //     return null;
+                        //   }
+                        // },
                         decoration: InputDecoration(
                             fillColor: Color(0xffffffff),
                             filled: true,
@@ -102,7 +102,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(30,   0, 30, 0),
+                      padding: EdgeInsetsDirectional.fromSTEB(35,0, 35, 0),
                       child: TextFormField(
                         controller: textController,
                         obscureText: !passwordVisibility,
