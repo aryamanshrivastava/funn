@@ -1,5 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
-import 'package:practise01/login.dart';
+import 'package:requests/requests.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -11,6 +13,16 @@ class HomePage extends StatefulWidget {
 final _formKey = GlobalKey<FormState>();
 
 class _HomePageState extends State<HomePage> {
+  late String u;
+  String r = "Send";
+  void getdata(String value) async {
+    var r = await Requests.get('https://api.isevenapi.xyz/api/iseven/$value/');
+    r.raiseForStatus();
+    String body = r.content();
+    var jsdata = jsonDecode(body);
+    print(jsdata['iseven']);
+  }
+
   final nameController = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -33,6 +45,7 @@ class _HomePageState extends State<HomePage> {
                   if (value == null || value.isEmpty) {
                     return 'Please enter input';
                   } else {
+                    u = value;
                     return null;
                   }
                 },
@@ -68,12 +81,13 @@ class _HomePageState extends State<HomePage> {
               child: ElevatedButton(
                 onPressed: () async {
                   if (_formKey.currentState!.validate()) {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => LoginPage()));
+                    setState(() {
+                      getdata(u);
+                    });
                   }
                 },
                 child: Text(
-                  'Send',
+                  '$r',
                   style: TextStyle(
                     color: Color(0xffffffff),
                     fontWeight: FontWeight.w800,
