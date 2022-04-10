@@ -57,13 +57,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.0"
-  favorite_button:
-    dependency: "direct main"
-    description:
-      name: favorite_button
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.0.4"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -95,13 +88,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.7.0"
-  otp_text_field:
-    dependency: "direct main"
-    description:
-      name: otp_text_field
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.1.2"
   path:
     dependency: transitive
     description:
@@ -172,4 +158,3 @@ packages:
     version: "2.1.1"
 sdks:
   dart: ">=2.14.0 <3.0.0"
-  flutter: ">=1.17.0"
