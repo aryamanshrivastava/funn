@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:practise01/login.dart';
 import 'package:requests/requests.dart';
 
 class HomePage extends StatefulWidget {
@@ -15,6 +14,7 @@ final _formKey = GlobalKey<FormState>();
 
 class _HomePageState extends State<HomePage> {
   late String u;
+  String r = "Send";
   void getdata(String value) async {
     var r = await Requests.get('https://api.isevenapi.xyz/api/iseven/$value/');
     r.raiseForStatus();
@@ -81,11 +81,13 @@ class _HomePageState extends State<HomePage> {
               child: ElevatedButton(
                 onPressed: () async {
                   if (_formKey.currentState!.validate()) {
-                    getdata(u);
+                    setState(() {
+                      getdata(u);
+                    });
                   }
                 },
                 child: Text(
-                  'Send',
+                  '$r',
                   style: TextStyle(
                     color: Color(0xffffffff),
                     fontWeight: FontWeight.w800,
